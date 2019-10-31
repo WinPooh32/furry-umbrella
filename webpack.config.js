@@ -1,3 +1,8 @@
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // installed via npm
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // installed via npm
+const webpack = require('webpack'); // to access built-in plugins
+const path = require('path');
+
 module.exports = {
     mode: "production",
 
@@ -7,6 +12,14 @@ module.exports = {
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".ts", ".tsx"]
+    },
+
+    output: {
+        /**
+         * With zero configuration,
+         *   clean-webpack-plugin will remove files inside the directory below
+         */
+        path: path.resolve(process.cwd(), 'dist'),
     },
 
     module: {
@@ -26,8 +39,14 @@ module.exports = {
                 test: /\.js$/,
                 loader: "source-map-loader"
             }
-        ]
+        ],
     },
+
+    plugins: [
+        new webpack.ProgressPlugin(),
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({ template: './src/index.html' }),
+    ],
 
     // When importing a module whose path matches one of the following, just
     // assume a corresponding global variable exists and use that instead.
