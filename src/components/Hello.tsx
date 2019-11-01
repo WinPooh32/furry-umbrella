@@ -7,10 +7,11 @@ export interface HelloProps { compiler: string; framework: string; }
 // State is never set so we use the '{}' type.
 export class Hello extends React.Component<HelloProps, {}> {
     render() {
+        const header = "Hello from" + this.props.compiler + " and " + this.props.framework + "!";
         return (
             <div>
-                <h1>Hello from {this.props.compiler} and {this.props.framework}!</h1>
-                <Button>Click Here</Button>
+                <h1>{header}</h1>
+                <Button>Нажми сюда!</Button>
             </div>
         )
     }

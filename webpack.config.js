@@ -1,16 +1,18 @@
 const {
     CleanWebpackPlugin
-} = require('clean-webpack-plugin'); // installed via npm
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // installed via npm
-const webpack = require('webpack'); // to access built-in plugins
-const path = require('path');
+} = require("clean-webpack-plugin"); // installed via npm
+const HtmlWebpackPlugin = require("html-webpack-plugin"); // installed via npm
+const webpack = require("webpack"); // to access built-in plugins
+const path = require("path");
+
+const buildMode = "production" // production development
 
 module.exports = {
-    mode: "production", // production development
+    mode: buildMode,
 
     entry: "./src/index.tsx",
 
-    // Enable sourcemaps for debugging webpack's output.
+    // Enable sourcemaps for debugging webpack"s output.
     devtool: "source-map",
 
     optimization: {
@@ -18,8 +20,8 @@ module.exports = {
     },
 
     resolve: {
-        // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", '.js']
+        // Add ".ts" and ".tsx" as resolvable extensions.
+        extensions: [".ts", ".tsx", ".js"]
     },
 
     output: {
@@ -27,7 +29,7 @@ module.exports = {
          * With zero configuration,
          *   clean-webpack-plugin will remove files inside the directory below
          */
-        path: path.resolve(process.cwd(), 'dist'),
+        path: path.resolve(process.cwd(), "dist"),
     },
 
     module: {
@@ -38,7 +40,7 @@ module.exports = {
                     loader: "ts-loader"
                 }]
             },
-            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+            // All output ".js" files will have any sourcemaps re-processed by "source-map-loader".
             {
                 enforce: "pre",
                 test: /\.js$/,
@@ -51,7 +53,11 @@ module.exports = {
         new webpack.ProgressPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: "./src/index.html",
+            react: (buildMode === "development") ?
+                "https://unpkg.com/react@16/umd/react.development.js" : "https://unpkg.com/react@16/umd/react.production.min.js",
+            reactdom: (buildMode === "development") ?
+                "https://unpkg.com/react-dom@16/umd/react-dom.development.js" : "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
         }),
     ],
 
