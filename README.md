@@ -11,3 +11,8 @@ Build project:
 ```
 npm run build
 ```
+
+Start webpack-dev-server with hot reloading:
+```
+npm run serve
+```
