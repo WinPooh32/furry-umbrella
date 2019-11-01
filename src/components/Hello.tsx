@@ -13,7 +13,7 @@ export class Hello extends React.Component<HelloProps, {}> {
         return (
             <div>
                 <h1>{header}</h1>
-                <Button>Press me</Button>
+                <Button>Press me more times</Button>
             </div>
         )
     }

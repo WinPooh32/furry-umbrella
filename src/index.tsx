@@ -10,3 +10,8 @@ if (rootElement && rootElement.hasChildNodes()) {
 } else {
     ReactDOM.render(rootTSX, rootElement)
 }
+
+// webpack hot reloading
+if (module.hot) {
+    module.hot.accept();
+}

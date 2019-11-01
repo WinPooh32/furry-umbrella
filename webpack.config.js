@@ -5,12 +5,14 @@ const HtmlWebpackPlugin = require("html-webpack-plugin"); // installed via npm
 const webpack = require("webpack"); // to access built-in plugins
 const path = require("path");
 
-const buildMode = "production" // production development
+const buildMode = "development" // production development
 
 module.exports = {
     mode: buildMode,
 
-    entry: "./src/index.tsx",
+    entry: [
+        "./src/index.tsx"
+    ],
 
     // Enable sourcemaps for debugging webpack"s output.
     devtool: "source-map",
@@ -32,6 +34,12 @@ module.exports = {
         path: path.resolve(process.cwd(), "dist"),
     },
 
+    devServer: {
+        host: '0.0.0.0',
+        port: 8080,
+        hot: true
+    },
+
     module: {
         rules: [{
                 test: /\.ts(x?)$/,
@@ -50,6 +58,7 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.ProgressPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
