@@ -2,16 +2,11 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Hello } from "./components/Hello";
 
-const rootElement = document.getElementById("application");
+const rootElement = document.getElementById("application")
+const rootTSX = <Hello compiler="TypeScript" framework="React" />
 
-if (rootElement.hasChildNodes()) {
-    ReactDOM.hydrate(
-        <Hello compiler="TypeScript" framework="React" />,
-        rootElement,
-    )
-}else{
-    ReactDOM.render(
-        <Hello compiler="TypeScript" framework="React" />,
-        rootElement,
-    )
+if (rootElement && rootElement.hasChildNodes()) {
+    ReactDOM.hydrate(rootTSX, rootElement)
+} else {
+    ReactDOM.render(rootTSX, rootElement)
 }
