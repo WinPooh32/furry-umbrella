@@ -1,11 +1,11 @@
 {
-  "name": "react-social",
+  "name": "react-semanticui-starter",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "WinPooh32",
+  "license": "MIT",
   "devDependencies": {
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
@@ -14,12 +14,15 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-snap": "^1.23.0",
-    "semantic-ui-react": "0.87.2",
+    "semantic-ui-react": "^0.87.2",
     "source-map-loader": "^0.2.4",
+    "terser-webpack-plugin": "^2.2.1",
     "ts-loader": "^6.2.1",
     "typescript": "^3.6.4",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "webpack-obfuscator": "^0.18.3"
   },
   "scripts": {
     "build": "webpack",
